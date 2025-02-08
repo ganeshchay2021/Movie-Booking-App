@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_booking_app/pages/botton%20nav%20bar/bottom_nav_bar.dart';
+
+import 'package:movie_booking_app/pages/movie%20details/movie_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const BottomNavBar(),
+      home: const MovieDetailsScreen(),
     );
   }
 }

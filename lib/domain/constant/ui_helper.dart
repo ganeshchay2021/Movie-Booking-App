@@ -6,10 +6,11 @@ class UiHelper {
     double? fontsize,
     double? height,
     FontWeight? fontWeight,
+    TextOverflow? textOverflow,
     Color? color,
   }) {
     return Text(
-      overflow: TextOverflow.ellipsis,
+      overflow: textOverflow,
       text,
       style: TextStyle(
         height: height,
@@ -27,6 +28,23 @@ class UiHelper {
       height: height,
       width: width,
       fit: boxFit,
+    );
+  }
+
+  static customBackButton({required VoidCallback onPressed}) {
+    return Container(
+      padding: const EdgeInsets.all(4),
+      height: 40,
+      width: 40,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: const Icon(Icons.arrow_back_ios),
+      ),
     );
   }
 }
