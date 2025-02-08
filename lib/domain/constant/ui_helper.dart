@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class UiHelper {
   static customText({
@@ -59,11 +56,12 @@ class UiHelper {
       TextInputType? textInputType,
       bool obscureText = false}) {
     return TextField(
-      style: const TextStyle(color: Colors.white, fontSize: 20),
+      style: const TextStyle(color: Colors.white, fontSize: 18),
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
+        // errorText: "Textfield is Empty",
         suffixIcon: IconButton(
           onPressed: onTap,
           icon: Icon(
@@ -79,7 +77,9 @@ class UiHelper {
   }
 
   static customButton(
-      {required BuildContext context, required VoidCallback onTap, required String btnText}) {
+      {required BuildContext context,
+      required VoidCallback onTap,
+      required String btnText}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -94,7 +94,7 @@ class UiHelper {
               color: const Color(0xff6b63ff),
               borderRadius: BorderRadius.circular(25),
             ),
-            child:  Text(
+            child: Text(
               btnText,
               style: const TextStyle(color: Colors.white, fontSize: 25),
             ),
