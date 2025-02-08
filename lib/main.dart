@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_booking_app/pages/login/login_screen.dart';
 
 import 'package:movie_booking_app/pages/movie%20details/movie_details_screen.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const MovieDetailsScreen(),
+      home: const LoginScreen(),
     );
   }
 }

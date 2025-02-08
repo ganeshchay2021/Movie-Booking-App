@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class UiHelper {
   static customText({
@@ -45,6 +48,59 @@ class UiHelper {
         onPressed: onPressed,
         icon: const Icon(Icons.arrow_back_ios),
       ),
+    );
+  }
+
+  static customTextfield(
+      {required String hintText,
+      VoidCallback? onTap,
+      required TextEditingController controller,
+      required IconData icon,
+      TextInputType? textInputType,
+      bool obscureText = false}) {
+    return TextField(
+      style: const TextStyle(color: Colors.white, fontSize: 20),
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        hintText: hintText,
+        suffixIcon: IconButton(
+          onPressed: onTap,
+          icon: Icon(
+            icon,
+            color: Colors.white,
+          ),
+        ),
+        hintStyle: const TextStyle(
+          color: Color.fromARGB(219, 255, 255, 255),
+        ),
+      ),
+    );
+  }
+
+  static customButton(
+      {required BuildContext context, required VoidCallback onTap, required String btnText}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        InkWell(
+          borderRadius: BorderRadius.circular(25),
+          onTap: onTap,
+          child: Container(
+            alignment: Alignment.center,
+            height: 50,
+            width: MediaQuery.of(context).size.width / 1.6,
+            decoration: BoxDecoration(
+              color: const Color(0xff6b63ff),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child:  Text(
+              btnText,
+              style: const TextStyle(color: Colors.white, fontSize: 25),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
