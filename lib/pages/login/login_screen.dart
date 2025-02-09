@@ -22,18 +22,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // Boolean to toggle password visibility
   bool showPassword = true;
-  
+
   // Boolean to track loading state
   bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff14141d), // Background color of the screen
+      backgroundColor:
+          const Color(0xff14141d), // Background color of the screen
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           // Handles various states from AuthBloc
-          
+
           if (state is AuthLoadingState) {
             // Set loading state to true when Auth is in loading state
             setState(() {
@@ -75,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                UiHelper.assetImage(image: Assets.signin), // Display logo or image
+                UiHelper.assetImage(
+                    image: Assets.signin), // Display logo or image
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
@@ -128,7 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: showPassword
                             ? Icons.visibility_off
                             : Icons.visibility,
-                        obscureText: showPassword, // Control password visibility
+                        obscureText:
+                            showPassword, // Control password visibility
                       ),
                       const SizedBox(height: 20),
                       // Forgot password link
@@ -157,9 +160,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (email != "" && password != "") {
                             // If both fields are non-empty, trigger the login event
                             context.read<AuthBloc>().add(AuthLoginEvent(
-                              email: email,
-                              password: password,
-                            ));
+                                  email: email,
+                                  password: password,
+                                ));
                           } else {
                             // Show error if email or password is empty
                             if (email == "") {
@@ -201,6 +204,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(width: 5),
                           InkWell(
                             onTap: () {
+                              emailController.text = "";
+                              passwordController.text = "";
+
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
