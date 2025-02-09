@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_booking_app/domain/constant/assets.dart';
 import 'package:movie_booking_app/domain/constant/ui_helper.dart';
-import 'package:movie_booking_app/pages/signup/sign_up_screen.dart';
+import 'package:movie_booking_app/pages/signup/widget/signup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -77,7 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     hintText: "Enter password",
                     controller: passwordController,
-                    icon: showPassword ? Icons.visibility_off : Icons.visibility,
+                    icon:
+                        showPassword ? Icons.visibility_off : Icons.visibility,
                     obscureText: showPassword,
                   ),
                   const SizedBox(
@@ -126,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                             context,
                             CupertinoPageRoute(
-                              builder: (context) => const SignUpScreen(),
+                              builder: (context) => const Signup(),
                             ),
                           );
                         },
