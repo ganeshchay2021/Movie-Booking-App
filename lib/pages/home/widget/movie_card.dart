@@ -16,6 +16,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // Card decoration with border and rounded corners
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
@@ -25,10 +26,9 @@ class MovieCard extends StatelessWidget {
       ),
       child: Stack(
         children: [
+          // Movie image with rounded corners
           ClipRRect(
-            borderRadius: BorderRadius.circular(
-              10,
-            ),
+            borderRadius: BorderRadius.circular(10),
             child: UiHelper.assetImage(
               image: movieImage,
               boxFit: BoxFit.cover,
@@ -37,6 +37,7 @@ class MovieCard extends StatelessWidget {
             ),
           ),
           Positioned(
+            // Bottom overlay with movie name and type
             bottom: 0,
             left: 0,
             right: 0,
@@ -45,11 +46,12 @@ class MovieCard extends StatelessWidget {
               height: 50,
               width: 200,
               decoration: const BoxDecoration(
-                color: Colors.black45,
+                color: Colors.black45, // Semi-transparent background
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Movie name text
                   UiHelper.customText(
                     text: movieName,
                     height: 0,
@@ -57,6 +59,7 @@ class MovieCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
+                  // Movie type/genre text
                   UiHelper.customText(
                     text: movieType,
                     fontsize: 15,

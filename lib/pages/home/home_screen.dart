@@ -12,11 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // List of image assets for carousel
   final List<String> image = [
     Assets.infinity,
     Assets.salman,
     Assets.shahrukhMovies
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //text for user name and profile
+              // User profile section with name and profile image
               Row(
                 children: [
                   UiHelper.assetImage(
@@ -35,9 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 40,
                     width: 40,
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  const SizedBox(width: 10),
                   UiHelper.customText(
                       text: "Hello, Ganesh",
                       color: Colors.white,
@@ -58,14 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ],
               ),
-              //welcome text
+              // Welcome text
               UiHelper.customText(
                 text: "Welcome To,",
                 color: const Color.fromARGB(186, 255, 255, 255),
                 fontsize: 18,
                 fontWeight: FontWeight.bold,
               ),
-              //app name text
+              // App name "Filmy Fun"
               Row(
                 children: [
                   UiHelper.customText(
@@ -82,9 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
+              // Image carousel with auto play
               CarouselSlider(
                 options: CarouselOptions(
                   height: 270,
@@ -111,18 +110,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }).toList(),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
+              // Section title for "Top Trending Movies"
               UiHelper.customText(
                 text: "Top Trending Movies",
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontsize: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
+              // Horizontal list of trending movies (MovieCard widgets)
               SizedBox(
                 height: 260,
                 child: ListView(
@@ -133,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       movieName: "Infinity",
                       movieType: "Action, Adventure",
                     ),
-                    SizedBox(width: 20,),
+                    SizedBox(width: 20),
                     MovieCard(
                       movieImage: Assets.pushpa,
                       movieName: "Pushpa",
