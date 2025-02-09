@@ -7,4 +7,5 @@ class Assets {
   static const String shahrukhMovies = "assets/images/shahrukhmovies.png";
   static const String signin = "assets/images/signin.png";
   static const String wave = "assets/images/wave.png";
+  static const String user="assets/images/Userimage.png";
 }

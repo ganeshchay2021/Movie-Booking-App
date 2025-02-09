@@ -4,7 +4,7 @@ import 'package:movie_booking_app/data/database/database_method.dart';
 import 'package:random_string/random_string.dart';
 
 class AuthRepository {
-  Future<Either<String, String>> register(
+  Future<Either<void, String>> register(
       {required String email,
       required String password,
       required String name}) async {
@@ -16,10 +16,11 @@ class AuthRepository {
         "id": id,
         "name": name,
         "email": email,
-        "password": password
+        "image":
+            "https://upload.wikimedia.org/wikipedia/commons/e/e0/Userimage.png"
       };
       await DatabaseMethod().addUserDetails(userInfoMap, id);
-      return const Left("User Registerd Successfully");
+      return const Left(null);
     } on FirebaseException catch (e) {
       if (e.code == 'weak-password') {
         return const Right("Password provided is weak");
@@ -28,6 +29,19 @@ class AuthRepository {
       } else {
         return Right(e.toString());
       }
+    }
+  }
+
+  Future<Either<void, String>> login(
+      {required String email, required String password}) async {
+    try {
+      final UserCredential _ = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      return const Left(null);
+    } on FirebaseException catch (e) {
+      return const Right("Invalid Credential");
+    } catch (e) {
+      return Right(e.toString());
     }
   }
 }

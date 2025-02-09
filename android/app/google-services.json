@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "931040667878",
-    "project_id": "filmyfun-85009",
-    "storage_bucket": "filmyfun-85009.firebasestorage.app"
+    "project_number": "914182579206",
+    "project_id": "filmyfun-82e8f",
+    "storage_bucket": "filmyfun-82e8f.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:931040667878:android:9a11d66aada9b6a460b327",
+        "mobilesdk_app_id": "1:914182579206:android:780ebe3fc966612d0c0f87",
         "android_client_info": {
           "package_name": "com.example.movie_booking_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA6QXfcroDkPpAge5Vk0XJZHPVo6YwOi-0"
+          "current_key": "AIzaSyATe2pF1g0AutAQ9siKBRIEhSt3nhUVx9c"
         }
       ],
       "services": {

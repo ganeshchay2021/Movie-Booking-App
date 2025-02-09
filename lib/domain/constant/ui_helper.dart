@@ -56,6 +56,7 @@ class UiHelper {
       TextInputType? textInputType,
       bool obscureText = false}) {
     return TextField(
+      cursorColor: Colors.white,
       style: const TextStyle(color: Colors.white, fontSize: 18),
       controller: controller,
       obscureText: obscureText,

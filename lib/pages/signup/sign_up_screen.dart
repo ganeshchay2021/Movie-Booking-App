@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:movie_booking_app/domain/constant/assets.dart';
-import 'package:movie_booking_app/domain/constant/common_state.dart';
 import 'package:movie_booking_app/domain/constant/ui_helper.dart';
 import 'package:movie_booking_app/pages/botton%20nav%20bar/bottom_nav_bar.dart';
-import 'package:movie_booking_app/pages/signup/cubit/signup_cubit.dart';
+import 'package:movie_booking_app/pages/login/bloc/auth_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -43,43 +42,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
       extendBodyBehindAppBar: true,
       backgroundColor: const Color(0xff14141d),
-      body: LoadingOverlay(
-        isLoading: isLoading,
-        child: SingleChildScrollView(
-          child: BlocListener<SignUpCubit, CommonState>(
-            listener: (context, state) {
-              if (state is CommonLoadingState) {
-                setState(() {
-                  isLoading = true;
-                });
-              } else {
-                setState(() {
-                  isLoading = false;
-                });
-              }
-              if (state is CommonErrorState) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: UiHelper.customText(text: state.errorMsg),
-                  ),
-                );
-              }
-              if (state is CommonSuccessState) {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) => const BottomNavBar(),
-                    ),
-                    (route) => false);
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthLoadingState) {
+            setState(() {
+              isLoading = true;
+            });
+          } else {
+            setState(() {
+              isLoading = false;
+            });
+          }
 
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content:
-                        UiHelper.customText(text: "User register seuccfully"),
-                  ),
-                );
-              }
-            },
+          if (state is AuthErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.red,
+                content:
+                    UiHelper.customText(text: state.errorMsg, fontsize: 18.0),
+              ),
+            );
+          }
+
+          if (state is AuthSuccessState) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => const BottomNavBar(),
+                ),
+                (route) => false);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.green,
+                content: UiHelper.customText(
+                    text: "User Registerd Successfully", fontsize: 18.0),
+              ),
+            );
+          }
+        },
+        child: LoadingOverlay(
+          isLoading: isLoading,
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -177,6 +180,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         UiHelper.customButton(
                           context: context,
                           onTap: () {
+                            String email = emailController.text;
+                            String name = nameController.text;
+                            String password = passwordController.text;
+
                             if (nameController.text != "" &&
                                 emailController.text != "" &&
                                 passwordController.text != "" &&
@@ -185,31 +192,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   emailController.text)) {
                                 if (passwordController.text ==
                                     confirmPasswordController.text) {
-                                  context.read<SignUpCubit>().register(
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                      name: nameController.text);
+                                  context.read<AuthBloc>().add(
+                                        AuthSignUpEvent(
+                                            email: email,
+                                            password: password,
+                                            name: name),
+                                      );
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
+                                      backgroundColor: Colors.red,
                                       content: UiHelper.customText(
-                                          text: "Password doesn't match"),
+                                          text: "Password doesn't match",
+                                          fontsize: 18.0),
                                     ),
                                   );
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
+                                    backgroundColor: Colors.red,
                                     content: UiHelper.customText(
-                                        text: "Invalid email"),
+                                        text: "Invalid email", fontsize: 18.0),
                                   ),
                                 );
                               }
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
+                                  backgroundColor: Colors.red,
                                   content: UiHelper.customText(
-                                      text: "Some Text field are empty"),
+                                    text: "Some Text field are empty",
+                                    fontsize: 18,
+                                  ),
                                 ),
                               );
                             }
