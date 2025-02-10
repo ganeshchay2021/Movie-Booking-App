@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UiHelper {
+
+  //custom text method
   static customText({
     required String text,
     double? fontsize,
@@ -21,6 +23,7 @@ class UiHelper {
     );
   }
 
+  //custom Image method
   static assetImage(
       {required String image, BoxFit? boxFit, double? height, double? width}) {
     return Image.asset(
@@ -31,6 +34,7 @@ class UiHelper {
     );
   }
 
+  //custom backbutton method
   static customBackButton({required VoidCallback onPressed}) {
     return Container(
       padding: const EdgeInsets.all(4),
@@ -48,6 +52,7 @@ class UiHelper {
     );
   }
 
+  //custom textfield method
   static customTextfield(
       {required String hintText,
       VoidCallback? onTap,
@@ -77,6 +82,7 @@ class UiHelper {
     );
   }
 
+  //custom button method
   static customButton(
       {required BuildContext context,
       required VoidCallback onTap,

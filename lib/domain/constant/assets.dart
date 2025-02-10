@@ -8,4 +8,7 @@ class Assets {
   static const String signin = "assets/images/signin.png";
   static const String wave = "assets/images/wave.png";
   static const String user="assets/images/Userimage.png";
+  static const String logo="assets/images/favicon.png";
+
+
 }

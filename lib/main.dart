@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_booking_app/data/repository/auth_repository.dart';
 import 'package:movie_booking_app/firebase_options.dart';
-import 'package:movie_booking_app/pages/login/widget/login.dart';
+import 'package:movie_booking_app/pages/splash/splash_screen.dart';
 
 void main() async {
   // Ensures Flutter is initialized before using platform channels (e.g., Firebase).
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.black, // Sets background color to black.
         ),
-        home: const Login(), // Sets Login screen as the initial screen.
+        home: const SplashScreen(), // Sets Splash screen as the initial screen.
       ),
     );
   }

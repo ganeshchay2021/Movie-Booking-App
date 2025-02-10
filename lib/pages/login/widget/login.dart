@@ -4,9 +4,14 @@ import 'package:movie_booking_app/data/repository/auth_repository.dart';
 import 'package:movie_booking_app/pages/login/bloc/auth_bloc.dart';
 import 'package:movie_booking_app/pages/login/login_screen.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

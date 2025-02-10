@@ -47,6 +47,8 @@ dependencies:
   email_validator:
   loading_overlay:
   bloc_concurrency:
+  flutter_secure_storage:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
