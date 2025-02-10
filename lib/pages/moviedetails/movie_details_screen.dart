@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:movie_booking_app/domain/constant/ui_helper.dart';
-import 'package:movie_booking_app/pages/movie%20details/widgets/time_slot_widget.dart';
+import 'package:movie_booking_app/pages/moviedetails/widgets/time_slot_widget.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   final String movieImage;
