@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_booking_app/domain/constant/assets.dart';
 import 'package:movie_booking_app/domain/constant/ui_helper.dart';
 import 'package:movie_booking_app/pages/home/widget/movie_card.dart';
-import 'package:movie_booking_app/pages/movie%20details/movie_details_screen.dart';
+import 'package:movie_booking_app/pages/moviedetails/movie_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

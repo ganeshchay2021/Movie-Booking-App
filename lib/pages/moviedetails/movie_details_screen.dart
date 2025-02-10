@@ -35,8 +35,18 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
     });
   }
 
-  int track = 0;
+  int track = 0, quantity = 1, total = 0;
   bool one = false, two = false, three = false;
+
+  @override
+  void initState() {
+    total = widget.moviePrice;
+    super.initState();
+  }
+
+  int totalPrice() {
+    return total * quantity;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +148,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             setState(() {
                               track = index;
                             });
+                           
                           },
                           child: Container(
                             width: 100,
@@ -248,20 +259,32 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    quantity++;
+                                    total = quantity * widget.moviePrice;
+                                  });
+                                },
                                 icon: const Icon(
                                   Icons.add,
                                   color: Colors.white,
                                 ),
                               ),
                               UiHelper.customText(
-                                text: "1",
+                                text: quantity.toString(),
                                 color: const Color(0xffedb41d),
                                 fontsize: 30,
                                 fontWeight: FontWeight.bold,
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    if (quantity > 1) {
+                                      quantity--;
+                                      total = quantity * widget.moviePrice;
+                                    }
+                                  });
+                                },
                                 icon: const Icon(
                                   Icons.remove,
                                   color: Colors.white,
@@ -284,7 +307,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           child: Column(
                             children: [
                               UiHelper.customText(
-                                text: "Total: Rs.${widget.moviePrice}",
+                                text: "Total: Rs.$total",
                                 fontsize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
