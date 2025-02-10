@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_booking_app/domain/constant/assets.dart';
 import 'package:movie_booking_app/domain/constant/ui_helper.dart';
 import 'package:movie_booking_app/pages/home/widget/movie_card.dart';
+import 'package:movie_booking_app/pages/movie%20details/movie_details_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -124,14 +126,36 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 260,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: const [
+                  children: [
                     MovieCard(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => const MovieDetailsScreen(
+                              moviePrice: 350,
+                                movieImage: Assets.infinity,
+                                movieName: "Infinity War",
+                                movieType: "Action, Adventure",
+                                movieDescription:
+                                    "The Avengers and their allies must be willing to sacrifies all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe"),
+                          ),
+                        );
+                      },
                       movieImage: Assets.infinity,
                       movieName: "Infinity",
                       movieType: "Action, Adventure",
                     ),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     MovieCard(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => const MovieDetailsScreen(movieImage: Assets.pushpa, movieName: "Pushpa 2: The Rule", movieType: "Action, Adventure", movieDescription: " The Rule is a 2024 Indian Telugu-language action drama film[8] written and directed by Sukumar and produced by Mythri Movie Makers in association with Sukumar Writings.", moviePrice: 300,),
+                          ),
+                        );
+                      },
                       movieImage: Assets.pushpa,
                       movieName: "Pushpa",
                       movieType: "Action, Adventure",
